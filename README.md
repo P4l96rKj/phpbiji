@@ -1,9 +1,8 @@
-# phpbiji  
 纯纯写作
 
 PHP
 
-第一节
+PHP基础
 
 # <p align="center">PHP基础</p> 
 ## 1.静态网站和动态网站
@@ -39,7 +38,7 @@ D:\phpStudy_pro\www
 > * 工具: vscode hbuider sublime...
 > * phpinfo();显示php信息函数。
 
-第二节
+PHP基本语法
 
 # <p align="center">PHP基本语法</p>
 ## 1.php标记
@@ -254,7 +253,8 @@ foreach（数组 as $key=>$valve）{
 
 函数
 
-# 1.自定义函数
+# <p align="center">函数</p>
+## 1.自定义函数
 ```
 function 函数名(参数){
 //函数体
@@ -306,7 +306,7 @@ function fun5 ($n){
   return $n*fun5($n-1);
 }
 ```
-# 2. 字符串相关函数
+## 2. 字符串相关函数
 `exlode`将字符串使用某个分隔符拆分成一个数组
 `$arr = explode('-',$str);`
 `implode`将数组中的元素利用某个分隔符连成一个字符串
@@ -341,7 +341,7 @@ strrpos（字符串，查找的字符）**最后**出现的位置
 `max() min() rand(0,10)`得到一个随机数
 `mt_rand()`效率更高 `rand($a,2)`四舍五入
 `ceil()`向上取整 `floor`向下取整
-# 3. 日期和时间函数
+## 3. 日期和时间函数
 * 1. 获取时间
 `time()`获得当前的时间戳
 `mktime`(时，分，秒，年，月，日）
@@ -370,23 +370,25 @@ gmdate(),'GMT';
 
 数组
 
-# 1. 含义：一系列数据的集合
+# <p align="center">数组</p>
+## 1. 含义：一系列数据的集合
 分类：
 * 索引数组
 * 关联数组
-# 2. 定义
+## 2. 定义
 `$arr[]=3;` `$arr[]=5];`
-# 3. 数组取值
+## 3. 数组取值
 `$name = $stu['name'];`
-# 4. 删除数组
+## 4. 删除数组
 - `unset($arr['age']);` //删除一个数组元素
 - `unset($arr);`  //删除整个数组
-# 5. 数组运算符
+## 5. 数组运算符
 `+`将右边的数组合并到左边数组的后边，得到一个新数组，如果有重复键以左边为准
 `==`相同的键名和键值（可以顺序不同，类型不同）
 
 PHP和Web页面交互
 
+# <p align="center">PHP和Web页面交互</p>
 ## 1. Web表单的组成
 1. from表单属性：
 * `method` -- 提交方式 `get post`
@@ -437,6 +439,7 @@ pattern正则表达式,验证格式
 
 超全局变量
 
+# <p align="center">超全局变量</p>
 函数的内部和外部---超全局变量
 `$_POST` `$_GET` `$_REQUEST` `$_SERVER` `$_SESSION` `$_COOKIE` `$_FILES` `$GLOBALS`
 - 均为数组
@@ -459,4 +462,24 @@ location.assign("02.php?data1=1001&data2=hbjd")
 header("location:02.php?data1=1001&data2=hbjd”)
 ?>
 ```
+
+PHP连接数据库
+
+# <p align="center">PHP连接数据库</p>
+- 1. 连接数据库
+`$link = mysqli_connect('localhost','root','root');`
+- 2. 判断是否连接成功
+```
+if(!$link){
+　　exit('数据库连接失败');
+}
+```
+- 3. 设置字符集
+`mysqli_set_charset($link,'utf-8);`
+
+test
+
+test
+
+
 
