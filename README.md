@@ -466,28 +466,28 @@ header("location:02.php?data1=1001&data2=hbjd”)
 PHP连接数据库
 
 # <p align="center">PHP连接数据库</p>
-- 1. 连接数据库
+1. 连接数据库
 `$link = mysqli_connect('localhost','root','root');`
-- 2. 判断是否连接成功
+2. 判断是否连接成功
 ```
 if(!$link){
 　　exit('数据库连接失败');
 }
 ```
-- 3. 设置字符集
+3. 设置字符集
 `mysqli_set_charset($link,'utf-8);`
-- 4. 选择数据库
+4. 选择数据库
 `mysqli_select_db($link,'books');`
-- 5. 准备sql语句
+5. 准备sql语句
 `$sql = "select * from bookInfo";`
-- 6. 执行sql语句
+6. 执行sql语句
 `$obj = mysqli_query($link, $sql);`
-- 7. 处理结果集(关联数组,一次一行)
+7. 处理结果集(关联数组,一次一行)
 ```
 $res = mysqli_fetch_assoc($obj); 
 var_dump($res);
 ```
-- 8. 关闭数据库
+8. 关闭数据库
 `mysqli_close($link);`
 
 test
