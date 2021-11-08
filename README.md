@@ -476,10 +476,27 @@ if(!$link){
 ```
 - 3. 设置字符集
 `mysqli_set_charset($link,'utf-8);`
+- 4. 选择数据库
+`mysqli_select_db($link,'books');`
+- 5. 准备sql语句
+`$sql = "select * from bookInfo";`
+- 6. 执行sql语句
+`$obj = mysqli_query($link, $sql);`
+- 7. 处理结果集(关联数组,一次一行)
+```
+$res = mysqli_fetch_assoc($obj); 
+var_dump($res);
+```
+- 8. 关闭数据库
+`mysqli_close($link);`
 
 test
 
 test
 
+### 欢迎使用 Gboard 剪贴板，您复制的所有文本都会保存到这里。
+### 点按剪贴内容即可将其粘贴到文本框中。使用“修改”图标可固定、添加或删除剪贴内容。
+### 轻触并按住剪贴内容即可将其固定。
+### 未固定的剪贴内容将于 1 小时之后被删除。
 
 
