@@ -8,21 +8,21 @@ PHP基础
 ## 1.静态网站和动态网站
 静态:**没有**数据交互的网站(.html .htm)
 动态:**支持**数据交互的网站 实现动态网站的技术
->ASP .asp
->PHP .php
->.net .aspx
->Java .jsp
+>ASP .asp  
+>PHP .php  
+>.net .aspx  
+>Java .jsp  
 ## 2.客户端和服务器端
 　　客户端给服务器端发送一个http请求，服务器端把静态资源(html,js,css)发送给客户端(http响应)，客户端通过浏览器解析返回的代码，形成了页面。  
 　　动态页面，则会先经过php预处理，将处理结果(静态页面)返回给客户端，**客户端看不到php代码**。
 ## 3.端口
 端口号范围0-65535 **1024**以内保留给系统
 Windows使用`netstat -ano`查看端口占用
->80端口-Web服务
->21端口-FTP服务
->25端口-邮件服务
->3306端口-MySQL服务
-## 4.B/S架构 C/S架构
+>80端口-Web服务  
+>21端口-FTP服务  
+>25端口-邮件服务  
+>3306端口-MySQL服务  
+## 4.B/S架构 C/S架构  
 B/S浏览器/服务器
 C/S客户端/服务器
 ## <font color="red">5.什么是PHP</font>
@@ -385,6 +385,52 @@ gmdate(),'GMT';
 ## 5. 数组运算符
 `+`将右边的数组合并到左边数组的后边，得到一个新数组，如果有重复键以左边为准
 `==`相同的键名和键值（可以顺序不同，类型不同）
+## 6. 数组指针函数
+* `next()`将数组的内部指针向**前**移动指针
+* `prev()`将数组的内部指针向**后**移动指针
+* `current()`获取数组当前元素的值
+* `key()`获取当前元素的下标（键名）
+* `end()`将数组的内部指针移动到结尾
+* `reset()`重置指针，将数组指针指向第一个元素  
+
+**当指针位置非法时**：
+current返回`false`，key返回`null`
+使用reset()或end()  
+
+`each()`获得当前元素的键和值，并且数组指针向前移动一位
+
+双份存储 `0 key键` `1 value值`
+
+- 利用while和each遍历数组
+```
+while($v1 = each($srr)){
+　　echo $v1[1].'<br>';
+}
+```
+- 利用foreach遍历数组
+```
+foreach($数组名 as [$key=>]$value){
+}
+```
+- 利用list(),while(),each()遍历数组
+　　list()取得一个数组中从0开始的数字下标的多个单元的值
+list（变量1，变量2，变量3…）=数组
+　　`变量1=$数组[0]`
+　　`变量2=$数组[1]`
+```
+while(list ($key $value)=each($arr)){
+　　each "{$key} => {$value}<br>";
+}
+```
+## 7. 操作数组基本函数
+* `is_array()`判断是否为数组
+* `count()`统计数组中元素的个数
+* `array_unique`移除数组中的重复元素
+> 键值对相关函数
+> - `array_search()`在数组中查找某个元素的值，返回该元素的键
+> - `array_search` (待查找的值，数组，true);严格比较（类型值）
+> - `array_keys()`取得数组中所有的**键**，形成索引数组
+> - `array_values()`取得数组中所有的**值**，形成索引数组
 
 PHP和Web页面交互
 
@@ -403,20 +449,20 @@ PHP和Web页面交互
 
 ### 2. input表单控件
 * 1. type 属性 
-text 单行文本框
-password 密码框 
-radio 单选按钮
-checkbox 复选框 
-file 文件域
-submit 提交按钮 
-reset 重置按钮
-button 普通按钮
-image 图像形式提交按钮
-email 邮件 
-url 网址
-tel 电话
-number 数值 
-date 日期
+text 单行文本框  
+password 密码框   
+radio 单选按钮  
+checkbox 复选框   
+file 文件域  
+submit 提交按钮  
+reset 重置按钮  
+button 普通按钮  
+image 图像形式提交按钮  
+email 邮件   
+url 网址  
+tel 电话  
+number 数值   
+date 日期  
 
 * 2. 其他属性
 autofocus自动获取焦点
@@ -490,13 +536,43 @@ var_dump($res);
 8. 关闭数据库
 `mysqli_close($link);`
 
-test
+数据库语言
 
-test
+# <p align="center">数据库语言</p>
 
-### 欢迎使用 Gboard 剪贴板，您复制的所有文本都会保存到这里。
-### 点按剪贴内容即可将其粘贴到文本框中。使用“修改”图标可固定、添加或删除剪贴内容。
-### 轻触并按住剪贴内容即可将其固定。
-### 未固定的剪贴内容将于 1 小时之后被删除。
+## 1. DDL语句（数据定义语句）
+- `create table`
+- `alter table`
+- `drop table`
+## 2. DML语句（数据操作语句）
+* `insert info 表名（字段） values（值）`
+* `update 表名`
+* `set 字段名 = 值`
+* `where 条件表达式`
+* `delete from 表名`
+* `where 条件表达式
+* `select 字段名 from 表名`
 
+
+## 其他常用函数（处理结果集）
+- `$res = mysqli_fetch_row($obj);`
+> 返回索引数组  
+- `$res = mysqli_fetch_array($obj);`
+> 返回索引数组和关联数组  
+- `$res = mysqli_num_rows($obj);`
+> 返回查询结果集的总行数
+- `$res = mysqli_affected_rows($obj);`
+> 添加、修改、操作受影响的行数
+- `$res = mysqli_insert_id($link)`
+> 最后插入的数据id  
+ 
+删除
+```
+$sql = "delete from bookInfo where bookId=$id;";   $bool = mysqli_query($link, $sql);  
+if ($bool&&mysqli_affected_rows ($link)) {   
+echo '删除成功';  
+else{  
+echo’删除失败’;  
+}
+```
 
