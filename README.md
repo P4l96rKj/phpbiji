@@ -68,12 +68,12 @@ header("Content-Type:text/html;charset=utf-8");
 ## 5.常量
 当一个值在脚本执行周期内不发生变化，就可以声明成常量。
 - **自定义常量：**
->define(常量名,常量值);
->define('name','张三');
->define('PAI',3.14);
->默认区分大小写
+>define(常量名,常量值);  
+>define('name','张三');  
+>define('PAI',3.14);  
+>默认区分大小写  
 >define('PAI',3.14,true); “true”表示不区分大小写  
-（低版本）
+（低版本）  
 <font color="red">**常量不能重复定义**</font>  
 ```
 if(!defined('PAI')){
@@ -88,10 +88,10 @@ define('PAI',3.14);
 get_defined_constants()得到所有的常量
 在php.ini配置文件中修改
 **extensiona＝php_mysqli.dll**
-> 3. 魔术常量（不区分大小写）
-__FILE__文件名
-__DIR__目录
-__LINE__行号
+> 3. 魔术常量（不区分大小写）  
+__FILE__文件名  
+__DIR__目录  
+__LINE__行号  
 ## 6.变量
 在程序执行期间可以变化的量，用变量保存值，变量是计算机内存中的一段。
 ### 1.变量的赋值方式：
@@ -110,11 +110,11 @@ echo $b;     10
 - **布尔型** bool： `true` `false`
 - **整形** int： 存放整数 （PHP_INT_MAX 最大整数）
 - **浮点型** float： 存放小数
-- **字符串** string： 单引号字符串和双引号字符串
-{双引号解析变量，单引号不解析变量（执行效率高）
+- **字符串** string： 单引号字符串和双引号字符串  
+{双引号解析变量，单引号不解析变量（执行效率高）  
 单引号只解析`\'`和`\\`转义字符}
 #### 复合类型
-#### 数组：计算机内存中一段连续空间，通过下标区分数组。
+##### 数组array：计算机内存中一段连续空间，通过下标区分数组。
 1. 索引数组：通过元素位置进行下标。
 ```
 $stu = array('小明','小华','小李');
@@ -129,40 +129,39 @@ $stu = array('name'=>'张三',
 var_dump($stu2);
 echo $stu2['name'];
 ```
-### 
-#### 对象object
-1. ---资源类型 `resource`  
+##### 对象object
+#### 资源类型 `resource`  
 php的外部数据称为资源  
 `$res = fopen('text.txt','r');`
-2. ---空null
+#### 空null
 未声明的变量值为`null`  
 声明变量赋值为`null`  
 通过`unset()`注销的变量  
-3. ---数据类型检测
+3. 数据类型检测
 > is_int() is_float() is _string() is_bool() is_array()  
 > is_object() is_resource() is_null()
 > is_numeric() 检测是否为数值或数值型字符串
-4. ---可变变量：
+4. 可变变量：
 变量名由另一个变量充当
 `$$nickname`
-5. ---数据类型转换
-+ 自动类型转换
-* 1. 转换为布尔型
- 数值型->布尔型：0值转换为false
- 字符串型->布尔型：' ' 和'0'转换为false
- 数组->布尔型：array()转换为false
-所有的 对象\资源 ->布尔型均为true
+5. 数据类型转换
+- 自动类型转换
+* 1. 转换为布尔型  
+ 数值型->布尔型：0值转换为false  
+ 字符串型->布尔型：' ' 和'0'转换为false  
+ 数组->布尔型：array()转换为false  
+所有的 对象\资源 ->布尔型均为true  
  null->布尔型为false
 * 2. 转换为整型（浮点型）
  从字符串开头开始，将符合整型（浮点型）规则的部分提取转换，如果开头没有则转换为0。
-+ 强制类型转换
+- 强制类型转换
 （目标类型）数据`（int）$name`  
 目标类型：int float string object bool array 
 unset（转换为空） <font color="red">不能转换为资源类型</font>
 **注意：源数据类型没有改变。**
 修改变量数据类型setType（变量，类型）
 `setType（$name,'int'）`
-7. ---运算符
+7. 运算符
 - 1. 算术运算符
  `+ - * / %（取余） ++自增 --自减`
 `++$a ++前置` 先自增再输出
@@ -184,7 +183,7 @@ unset（转换为空） <font color="red">不能转换为资源类型</font>
 - 7. 错误抑制符 @
 运算符优先级：括号最优先，赋值最低。
 !>算数>比较>逻辑
-- 8. 流程控制语句
+8. 流程控制语句
 - * （1）. 多分支
 ```
 if(条件){
@@ -307,11 +306,11 @@ function fun5 ($n){
 }
 ```
 ## 2. 字符串相关函数
-`exlode`将字符串使用某个分隔符拆分成一个数组
+1. `exlode`将字符串使用某个分隔符拆分成一个数组
 `$arr = explode('-',$str);`
-`implode`将数组中的元素利用某个分隔符连成一个字符串
+2. `implode`将数组中的元素利用某个分隔符连成一个字符串
 
-`strcmp($str1,$str2)`字符串比较（ASCII码）
+3. `strcmp($str1,$str2)`字符串比较（ASCII码）
 ***返回值*** 
 > 小于0     `$str1<$str2`
 > 大于0     `$str1>$str2`
@@ -321,20 +320,20 @@ function fun5 ($n){
 > `strCasecmp()`不区分大小写
 > `strNcmp($str1,$str2,n)`仅比较前n位
 
-str_replace(查找,替换,原字符串)
-- substr 截取
+4. str_replace(查找,替换,原字符串)
+5. substr 截取
 　　substr（字符串，起始位置从0开始，[长度]）
 　　strstr（字符串，匹配字符）
-- strlen 长度
+6.strlen 长度
 　　UTF-8编码格式下汉字占3个字节
-- trim 去两端空格
+7. trim 去两端空格
 　　Ltrim() 去左边
 　　Rtrim() 去右边
-- 大小写转换
+8. 大小写转换
 　　strtolower 全部小写
 　　strtoupper 全部大写
 　　Uefirst 首字母大写
-- 查找函数
+9. 查找函数
 strpos（字符串，查找的字符）**首次**出现的位置
 strrpos（字符串，查找的字符）**最后**出现的位置
 * 数学函数
@@ -342,30 +341,33 @@ strrpos（字符串，查找的字符）**最后**出现的位置
 `mt_rand()`效率更高 `rand($a,2)`四舍五入
 `ceil()`向上取整 `floor`向下取整
 ## 3. 日期和时间函数
-* 1. 获取时间
-`time()`获得当前的时间戳
-`mktime`(时，分，秒，年，月，日）
-`Microtime()`获取精确时间，精确到微妙
+1. 获取时间
+`time()`获得当前的时间戳  
+`mktime`(时，分，秒，年，月，日）  
+`Microtime()`获取精确时间，精确到微妙  
 　　true 默认返回字符串，加true，返回float
-`strtotime()`转换为时间戳
-　　strtotime('2020-02-29 01:02:03');
-　　strtotime('+1 week');
-　　strtotime('-3 days');
-* 2. 格式化输出时间
+`strtotime()`转换为时间戳  
+　　strtotime('2020-02-29 01:02:03');  
+　　strtotime('+1 week');  
+　　strtotime('-3 days');  
+2. 格式化输出时间
 　　`date()`格式化本地时间
-`date('Y-m-d H-i-s',$time);`
-`date('D-M-Y H-i-s',$time);`
+`date('Y-m-d H-i-s',$time);`  
+`date('D-M-Y H-i-s',$time);`  
 　　`gmdate()`格式化格林威治平时
-gmdate(),'GMT';
-* 3. 设置时区
-配置文件`php.ini`，查看时区。
-`date.timezone=Asia/Shanghai`
-代码中设置时区
-`date_default_timezone_set('PRC');`
-获取时区
-`date_default_timezone_get();`  
+gmdate(),'GMT';  
+3. 设置时区
+配置文件`php.ini`，查看时区。  
+`date.timezone=Asia/Shanghai`  
+代码中设置时区  
+`date_default_timezone_set('PRC');`  
+获取时区  
+`date_default_timezone_get();`    
 
-设置编码格式
++ 利用手册查找函数  
+`str_repeat()`  
+`str_shuffle()`  
++ 设置编码格式
 `header("content-type:text/html;charset=utf-8");`
 
 数组
@@ -426,11 +428,28 @@ while(list ($key $value)=each($arr)){
 * `is_array()`判断是否为数组
 * `count()`统计数组中元素的个数
 * `array_unique`移除数组中的重复元素
-> 键值对相关函数
-> - `array_search()`在数组中查找某个元素的值，返回该元素的键
-> - `array_search` (待查找的值，数组，true);严格比较（类型值）
-> - `array_keys()`取得数组中所有的**键**，形成索引数组
-> - `array_values()`取得数组中所有的**值**，形成索引数组
+1. 键值对相关函数
+> - `array_search()`在数组中查找某个元素的值，返回该元素的键  
+> - `array_search` (待查找的值，数组，true);严格比较（类型值）  
+> - `array_keys()`取得数组中所有的**键**，形成索引数组  
+> - `array_values()`取得数组中所有的**值**，形成索引数组  
+2. 其他函数
+sort(); 按照值，升序排序。不保持键值关联，下标重排。
+rsort(); 降序
+asort(); 下标保留
+ksort(); 按照下标排序
+krsort(); 按照下标降序
+array_merge(); 合并 
+array_chunk(); 拆分  
+array_chunk($arr,每个数组的元素个数,true);  
+> 保留原下标  
+  
+<u>合并注意，下标相同如何处理？</u>
+- 下标为数值型，会重新索引，从0开始递增
+- 下标为字符串，不会重新索引，后面覆盖前面的  
+
+array_rand 随机从数组中取得元素，返回该元素的下标
+> array_rand($arr,2);
 
 PHP和Web页面交互
 
@@ -481,60 +500,41 @@ pattern正则表达式,验证格式
 - 每个表单控件有 name 属性值，复选框的 name 值使用数组 hobby[]
 - 如果不能确定 get 或 post 提交的数据，可以`$_REQUEST`超全局变量获取数据
 ## 3. 表单数据安全性校验
-如果用户输入数据要直接输出到页面上用`htmlspecialchars()`将 html 代码转换为 html 实体
+如果用户输入数据要直接输出到页面上用`htmlspecialchars()`将 html 代码转换为 html 实体  
+## 4. `$_GET`   4种方式
+- form提交方式get
+`<a href="02.php?data1=1001&data2=hbjd">超链接</a>`
+- javascript页面跳转  
+`location.assign("...");`
+- php页面跳转  
+`header("location:...");`  
+## 5. `$_REQUEST`
+ 是`$_POST`和`$_GET`数据的合集  
+## 6. `$_SERVER`   
+在一次浏览网页的过程中浏览器或服务器端
+的一些信息。  
+## 7. `$GLOBALS`  
+用于在函数内部使用全局变量。  
+`$GLOBALS['v1']`
 
-超全局变量
+PHP的会话技术
 
-# <p align="center">超全局变量</p>
-函数的内部和外部---超全局变量
-`$_POST` `$_GET` `$_REQUEST` `$_SERVER` `$_SESSION` `$_COOKIE` `$_FILES` `$GLOBALS`
-- 均为数组
-- 定义和维护都是系统完成的（我们只能使用，不能赋值和销毁）
-- 具有超全局作用域
-- 不同情形下值可能不同
-1. `$_GET`变量：用户通过get方式提交的所有数据（共有4中形式）
-- 1. 表单get方式提交
-- 2. 
-`<a href="目标文件.php?data01=1001&data02=hbjd">`
-- 3. js中页面跳转
-```
-<script type="text/javascript">
-location.assign("02.php?data1=1001&data2=hbjd")
-</script>
-```
-- 4. php的跳转
-```
-<?php
-header("location:02.php?data1=1001&data2=hbjd”)
-?>
-```
+# <p align="center">PHP的会话技术</p>  
+> 会话技术：就需要在浏览器和服务器的多次请求响应周期内，将数据保存下来的一门技术。  
 
-PHP连接数据库
+典型：`cookie` `session`
+1. cookie 将数据保存在浏览器端。  
+`setcookie(名字,值); //设置cookie`  
+`$_COOKIE` 数组获取cookie  
+2. cookie有效期
+`setcookie(名字,值,有效期);`  
+`setcookie('name','张三',time()+60);`  
+3. cookie有效范围  
+`setcookie('name','张三',time()+60,'/');`  
+> 默认为当前目录  
+> /表示整站有效
 
-# <p align="center">PHP连接数据库</p>
-1. 连接数据库
-`$link = mysqli_connect('localhost','root','root');`
-2. 判断是否连接成功
-```
-if(!$link){
-　　exit('数据库连接失败');
-}
-```
-3. 设置字符集
-`mysqli_set_charset($link,'utf-8);`
-4. 选择数据库
-`mysqli_select_db($link,'books');`
-5. 准备sql语句
-`$sql = "select * from bookInfo";`
-6. 执行sql语句
-`$obj = mysqli_query($link, $sql);`
-7. 处理结果集(关联数组,一次一行)
-```
-$res = mysqli_fetch_assoc($obj); 
-var_dump($res);
-```
-8. 关闭数据库
-`mysqli_close($link);`
+~~~~~分隔符~~~~~
 
 数据库语言
 
@@ -575,4 +575,61 @@ else{
 echo’删除失败’;  
 }
 ```
+
+超全局变量
+
+# <p align="center">超全局变量</p>
+函数的内部和外部---超全局变量
+`$_POST` `$_GET` `$_REQUEST` `$_SERVER` `$_SESSION` `$_COOKIE` `$_FILES` `$GLOBALS`
+- 均为数组
+- 定义和维护都是系统完成的（我们只能使用，不能赋值和销毁）
+- 具有超全局作用域
+- 不同情形下值可能不同
+1. `$_GET`变量：用户通过get方式提交的所有数据（共有4中形式）
+- 1. 表单get方式提交
+- 2. 
+`<a href="目标文件.php?data01=1001&data02=hbjd">`
+- 3. js中页面跳转
+```
+<script type="text/javascript">
+location.assign("02.php?data1=1001&data2=hbjd")
+</script>
+```
+- 4. php的跳转
+```
+<?php
+header("location:02.php?data1=1001&data2=hbjd”)
+?>
+```
+2. `$_REUQEST`：是`$_POST`和`$-GET`数据的合集  
+3. `$_SERVER` 在一次浏览网页的过程中浏览器或服务器端的一些信息
+4. `$GLOBALS`：用于在函数内部使用全局变量  
+`$GLOBALS['v1']`
+
+PHP连接数据库
+
+# <p align="center">PHP连接数据库</p>
+1. 连接数据库
+`$link = mysqli_connect('localhost','root','root');`
+2. 判断是否连接成功
+```
+if(!$link){
+　　exit('数据库连接失败');
+}
+```
+3. 设置字符集
+`mysqli_set_charset($link,'utf-8);`
+4. 选择数据库
+`mysqli_select_db($link,'books');`
+5. 准备sql语句
+`$sql = "select * from bookInfo";`
+6. 执行sql语句
+`$obj = mysqli_query($link, $sql);`
+7. 处理结果集(关联数组,一次一行)
+```
+$res = mysqli_fetch_assoc($obj); 
+var_dump($res);
+```
+8. 关闭数据库
+`mysqli_close($link);`
 
