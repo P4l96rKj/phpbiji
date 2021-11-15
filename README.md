@@ -536,46 +536,6 @@ PHP的会话技术
 
 ~~~~~分隔符~~~~~
 
-数据库语言
-
-# <p align="center">数据库语言</p>
-
-## 1. DDL语句（数据定义语句）
-- `create table`
-- `alter table`
-- `drop table`
-## 2. DML语句（数据操作语句）
-* `insert info 表名（字段） values（值）`
-* `update 表名`
-* `set 字段名 = 值`
-* `where 条件表达式`
-* `delete from 表名`
-* `where 条件表达式
-* `select 字段名 from 表名`
-
-
-## 其他常用函数（处理结果集）
-- `$res = mysqli_fetch_row($obj);`
-> 返回索引数组  
-- `$res = mysqli_fetch_array($obj);`
-> 返回索引数组和关联数组  
-- `$res = mysqli_num_rows($obj);`
-> 返回查询结果集的总行数
-- `$res = mysqli_affected_rows($obj);`
-> 添加、修改、操作受影响的行数
-- `$res = mysqli_insert_id($link)`
-> 最后插入的数据id  
- 
-删除
-```
-$sql = "delete from bookInfo where bookId=$id;";   $bool = mysqli_query($link, $sql);  
-if ($bool&&mysqli_affected_rows ($link)) {   
-echo '删除成功';  
-else{  
-echo’删除失败’;  
-}
-```
-
 超全局变量
 
 # <p align="center">超全局变量</p>
@@ -632,4 +592,71 @@ var_dump($res);
 ```
 8. 关闭数据库
 `mysqli_close($link);`
+
+数据库语言
+
+# <p align="center">数据库语言</p>
+
+## 1. DDL语句（数据定义语句）
+- `create table`
+- `alter table`
+- `drop table`
+## 2. DML语句（数据操作语句）
+* `insert info 表名（字段） values（值）`
+* `update 表名`
+* `set 字段名 = 值`
+* `where 条件表达式`
+* `delete from 表名`
+* `where 条件表达式
+* `select 字段名 from 表名`
+
+
+## 其他常用函数（处理结果集）
+- `$res = mysqli_fetch_row($obj);`
+> 返回索引数组  
+- `$res = mysqli_fetch_array($obj);`
+> 返回索引数组和关联数组  
+- `$res = mysqli_num_rows($obj);`
+> 返回查询结果集的总行数
+- `$res = mysqli_affected_rows($obj);`
+> 添加、修改、操作受影响的行数
+- `$res = mysqli_insert_id($link)`
+> 最后插入的数据id  
+ 
+删除
+```
+$sql = "delete from bookInfo where bookId=$id;";   $bool = mysqli_query($link, $sql);  
+if ($bool&&mysqli_affected_rows ($link)) {   
+echo '删除成功';  
+else{  
+echo’删除失败’;  
+}
+```
+修改  
+```
+$sql="update bookInfo
+　　set typeId=$typeId,bookName='$bookName' 
+　　where bookId=$id;";
+$bool=mysqli_query($link,$sql); //判断是否修改成功
+if($bool&&mysqli_affected_rows($link)) {
+echo '修改成功<a href="booklist.php">返回</a>';
+}
+else {
+echo '修改失败’;
+}
+```
+添加  
+```
+$sql = "insert into bookInfo(typeId, bookName)
+values($typeId,'$bookName')";
+//echo $sql;
+$bool = mysqli_query($link,$sql);
+$id = mysqli_insert_id($link);
+if($id){
+echo '添加成功<a href="booklist. php">返回</a>';
+}
+else {
+echo ’添加失败’;
+}
+```
 
