@@ -623,7 +623,8 @@ var_dump($res);
 - `$res = mysqli_insert_id($link)`
 > 最后插入的数据id  
  
-删除
+删除  
+
 ```
 $sql = "delete from bookInfo where bookId=$id;";   $bool = mysqli_query($link, $sql);  
 if ($bool&&mysqli_affected_rows ($link)) {   
@@ -632,7 +633,9 @@ else{
 echo’删除失败’;  
 }
 ```
+
 修改  
+
 ```
 $sql="update bookInfo
 　　set typeId=$typeId,bookName='$bookName' 
@@ -645,7 +648,9 @@ else {
 echo '修改失败’;
 }
 ```
+
 添加  
+
 ```
 $sql = "insert into bookInfo(typeId, bookName)
 values($typeId,'$bookName')";
