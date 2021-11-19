@@ -665,3 +665,12 @@ echo ’添加失败’;
 }
 ```
 
+* 分页  
+1. 求出总条数
+`select count(*) from bookInfo;`
+2. 每页显示数
+`$num = 4;`
+3. 求出总页数
+`$pageCount = ceil($count/$num);`
+4. 求出偏移量
+`$offset = ($page-1)*$num;`
