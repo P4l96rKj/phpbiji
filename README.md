@@ -701,4 +701,5 @@ echo ’添加失败’;
 `$_SESSION['name']='张三';`  
 3. 使用
 `echo $_SESSION['name'];`
-
+> 设置 session 文件保存路径  
+> `session_save_path("D:/session");`  
