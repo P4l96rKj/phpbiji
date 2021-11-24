@@ -23,8 +23,8 @@ Windows使用`netstat -ano`查看端口占用
 >25端口-邮件服务  
 >3306端口-MySQL服务  
 ## 4.B/S架构 C/S架构  
-B/S浏览器/服务器
-C/S客户端/服务器
+B/S浏览器/服务器  
+C/S客户端/服务器  
 ## <font color="red">5.什么是PHP</font>
 　　**超文本预处理器开源脚本语言。**
 运行原理：
@@ -674,3 +674,21 @@ echo ’添加失败’;
 `$pageCount = ceil($count/$num);`
 4. 求出偏移量
 `$offset = ($page-1)*$num;`
+
+会话技术
+
+# <p align="center">会话技术</p>
+
+## 在浏览器和服务器的多次请求响应周期内,将数据保存下来的一门技术。
+两种会话技术; `cookie` `session`
+### 1. cookie技术
+> 将数据存在浏览器端。
+- 设置cookie后，数据由服务器端传给浏览器端。  
+- 下一次请求时，携带cookie，服务器接收请求后将携带的cookie数据整理到`$_COOKIE`数组变量中，供php使用。  
+1. 设置`setcookie('name','张三');`  
+2. 使用`$_COOKIE`  
+`setcookie('名','值,有效期,有效范围);`  
+`setcookie('name','张三',time()+60*60,'/')`  
+- 默认cookie变量有效范围是当前目录, '/' 表示整站有效。 
+3. 删除`cookie`  
+`setcookie('name',time()-1);`
