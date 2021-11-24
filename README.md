@@ -692,3 +692,13 @@ echo ’添加失败’;
 - 默认cookie变量有效范围是当前目录, '/' 表示整站有效。 
 3. 删除`cookie`  
 `setcookie('name','张三',time()-1);`
+### 2. session 技术
+> session数据存在服务器端。  
+- 当浏览器没有携带 sessionID 对服务器发出请求时，服务器会生成一个唯一的 sessionID，并在响应时传给浏览器，浏览器使用 cookie 保存该标识。
+1. 开启 session
+`session-start();`  
+2. 定义
+`$_SESSION['name']='张三';`  
+3. 使用
+`echo $_SESSION['name'];`
+
