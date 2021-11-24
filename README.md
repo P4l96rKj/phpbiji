@@ -703,3 +703,12 @@ echo ’添加失败’;
 `echo $_SESSION['name'];`
 > 设置 session 文件保存路径  
 > `session_save_path("D:/session");`  
+4. 删除
+* 删除一个 session 数据  
+`unset($_SESSION['username']);`  
+* 删除所有 session 数据  
+`$_SESSION=array();`  
+* 删除 session 文件  
+`session_destroy();`  
+* 删除 session ID  
+`setcookie('PHPSESSID','',time()-1);`  
