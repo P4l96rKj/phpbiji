@@ -691,4 +691,4 @@ echo ’添加失败’;
 `setcookie('name','张三',time()+60*60,'/')`  
 - 默认cookie变量有效范围是当前目录, '/' 表示整站有效。 
 3. 删除`cookie`  
-`setcookie('name',time()-1);`
+`setcookie('name','张三',time()-1);`
