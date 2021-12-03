@@ -1,9 +1,3 @@
-纯纯写作
-
-PHP
-
-PHP基础
-
 # <p align="center">PHP基础</p> 
 ## 1.静态网站和动态网站
 静态:**没有**数据交互的网站(.html .htm)
@@ -11,17 +5,19 @@ PHP基础
 >ASP .asp  
 >PHP .php  
 >.net .aspx  
->Java .jsp  
+>Java .jsp   
+
 ## 2.客户端和服务器端
 　　客户端给服务器端发送一个http请求，服务器端把静态资源(html,js,css)发送给客户端(http响应)，客户端通过浏览器解析返回的代码，形成了页面。  
-　　动态页面，则会先经过php预处理，将处理结果(静态页面)返回给客户端，**客户端看不到php代码**。
-## 3.端口
+　　动态页面，则会先经过php预处理，将处理结果(静态页面)返回给客户端，**客户端看不到php代码**。  
+## 3.端口  
 端口号范围0-65535 **1024**以内保留给系统
 Windows使用`netstat -ano`查看端口占用
 >80端口-Web服务  
 >21端口-FTP服务  
 >25端口-邮件服务  
->3306端口-MySQL服务  
+>3306端口-MySQL服务   
+
 ## 4.B/S架构 C/S架构  
 B/S浏览器/服务器  
 C/S客户端/服务器  
@@ -51,18 +47,21 @@ header("Content-Type:text/html;charset=utf-8");
 - var_dump() 数组/变量类型/值
 - gettype() 只获取类型 echo gettype($a)
 - print_r() 数组
+
 ## 2.注释
 - //单行注释
 - #单行注释
 - /*
 多行注释
 */
+
 ## 3.标识符命名规则
 - 只能由字母、数字、下划线组成，**不能以数字开头**。
 - userName user_name
 - 见名知意
 - 区分大小写：变量名，常量名，属性名。
-- 不区分大小写：函数名、方法名、接口名、类名。
+- 不区分大小写：函数名、方法名、接口名、类名。 
+
 ## 4.关键字：不区分大小写
 
 ## 5.常量
@@ -92,6 +91,7 @@ get_defined_constants()得到所有的常量
 __FILE__文件名  
 __DIR__目录  
 __LINE__行号  
+
 ## 6.变量
 在程序执行期间可以变化的量，用变量保存值，变量是计算机内存中的一段。
 ### 1.变量的赋值方式：
@@ -115,11 +115,13 @@ echo $b;     10
 单引号只解析`\'`和`\\`转义字符}
 #### 复合类型
 ##### 数组array：计算机内存中一段连续空间，通过下标区分数组。
+
 1. 索引数组：通过元素位置进行下标。
 ```
 $stu = array('小明','小华','小李');
 echo $stu[0];
 ```
+
 2. 关联数组：用字符串作下标。
 ```
 $stu = array('name'=>'张三',
@@ -129,21 +131,26 @@ $stu = array('name'=>'张三',
 var_dump($stu2);
 echo $stu2['name'];
 ```
+
 ##### 对象object
 #### 资源类型 `resource`  
+
 php的外部数据称为资源  
 `$res = fopen('text.txt','r');`
 #### 空null
 未声明的变量值为`null`  
 声明变量赋值为`null`  
 通过`unset()`注销的变量  
+
 3. 数据类型检测
 > is_int() is_float() is _string() is_bool() is_array()  
 > is_object() is_resource() is_null()
-> is_numeric() 检测是否为数值或数值型字符串
+> is_numeric() 检测是否为数值或数值型字符串  
+
 4. 可变变量：
 变量名由另一个变量充当
-`$$nickname`
+`$$nickname`  
+
 5. 数据类型转换
 - 自动类型转换
 * 1. 转换为布尔型  
@@ -153,14 +160,16 @@ php的外部数据称为资源
 所有的 对象\资源 ->布尔型均为true  
  null->布尔型为false
 * 2. 转换为整型（浮点型）
- 从字符串开头开始，将符合整型（浮点型）规则的部分提取转换，如果开头没有则转换为0。
+ 从字符串开头开始，将符合整型（浮点型）规则的部分提取转换，如果开头没有则转换为0。  
+
 - 强制类型转换
 （目标类型）数据`（int）$name`  
 目标类型：int float string object bool array 
 unset（转换为空） <font color="red">不能转换为资源类型</font>
 **注意：源数据类型没有改变。**
 修改变量数据类型setType（变量，类型）
-`setType（$name,'int'）`
+`setType（$name,'int'）`  
+
 7. 运算符
 - 1. 算术运算符
  `+ - * / %（取余） ++自增 --自减`
@@ -185,6 +194,7 @@ unset（转换为空） <font color="red">不能转换为资源类型</font>
 !>算数>比较>逻辑
 8. 流程控制语句
 - * （1）. 多分支
+
 ```
 if(条件){
 }
@@ -193,13 +203,17 @@ elseif(条件){
 else{
 }
 ```
+
 判断是否点击提交按钮
+
 ```
 if(isset($_POST['btn'])){
 
 }
 ```
+
 - * （2）. 多路选择
+
 ```
 switch(表达式)
 {case 常量1:
@@ -212,41 +226,53 @@ default:
         代码3;
 }
 ```
+
 ![多语句选择流程图](https://i.loli.net/2021/09/20/byGVrSXN2KfmDTt.jpg)
 - * （3）.循环语句
 * 1. for循环
+
 ```
 for(初始值;条件;增量){
 //循环体
 }
 ```
+
 * 2. while循环
+
 ```
 while(条件){
 //循环体
 增量
 }
 ```
+
 * 3. do_while循环
+
 ```
 do{
 //循环体
 }while(条件);
 ```
+
 * 4. foreach **用来遍历数组**
+
 - 语法1（值）：
+
 ```
 foreach（数组 as 值变量）{
 //循环体
 }
 ```
+
 - 语法2（取键和值）：
+
 ```
 foreach（数组 as $key=>$valve）{
 //循环体
 }
 ```
-- * （4）.跳转语句
+
+- * （4）.跳转语句  
 `break`：**中断循环**
 `continue`：**结束当前循环进入下一个循环**
 
@@ -534,7 +560,7 @@ PHP的会话技术
 > 默认为当前目录  
 > /表示整站有效
 
------------
+------------
 
 超全局变量
 
@@ -612,18 +638,18 @@ var_dump($res);
 
 
 ## 其他常用函数（处理结果集）
-- `$res = mysqli_fetch_row($obj);`
+1. `$res = mysqli_fetch_row($obj);`
 > 返回索引数组  
-- `$res = mysqli_fetch_array($obj);`
+2. `$res = mysqli_fetch_array($obj);`
 > 返回索引数组和关联数组  
-- `$res = mysqli_num_rows($obj);`
+3. `$res = mysqli_num_rows($obj);`
 > 返回查询结果集的总行数
-- `$res = mysqli_affected_rows($obj);`
+4. `$res = mysqli_affected_rows($obj);`
 > 添加、修改、操作受影响的行数
-- `$res = mysqli_insert_id($link)`
+5. `$res = mysqli_insert_id($link)`
 > 最后插入的数据id  
  
-删除  
+* 删除
 
 ```
 $sql = "delete from bookInfo where bookId=$id;";   $bool = mysqli_query($link, $sql);  
@@ -634,7 +660,7 @@ echo’删除失败’;
 }
 ```
 
-修改  
+* 修改  
 
 ```
 $sql="update bookInfo
@@ -649,8 +675,8 @@ echo '修改失败’;
 }
 ```
 
-添加  
-
+* 添加 
+ 
 ```
 $sql = "insert into bookInfo(typeId, bookName)
 values($typeId,'$bookName')";
@@ -673,17 +699,19 @@ echo ’添加失败’;
 3. 求出总页数
 `$pageCount = ceil($count/$num);`
 4. 求出偏移量
-`$offset = ($page-1)*$num;`
+`$offset = ($page-1)*$num`
 
 会话技术
 
 # <p align="center">会话技术</p>
 
-## 在浏览器和服务器的多次请求响应周期内,将数据保存下来的一门技术。
-两种会话技术; `cookie` `session`
-### 1. cookie技术
-> 将数据存在浏览器端。
-- 设置cookie后，数据由服务器端传给浏览器端。  
+## 在浏览器和服务器的多次请求响应周期内,将数据保存下来的一门技术。  
+两种会话技术; `cookie` `session`  
+
+### 1. cookie技术  
+> 将数据存在浏览器端。  
+
+- 设置cookie后，数据由服务器端传给浏览器端。   
 - 下一次请求时，携带cookie，服务器接收请求后将携带的cookie数据整理到`$_COOKIE`数组变量中，供php使用。  
 1. 设置`setcookie('name','张三');`  
 2. 使用`$_COOKIE`  
@@ -691,16 +719,19 @@ echo ’添加失败’;
 `setcookie('name','张三',time()+60*60,'/')`  
 - 默认cookie变量有效范围是当前目录, '/' 表示整站有效。 
 3. 删除`cookie`  
-`setcookie('name','张三',time()-1);`
+`setcookie('name','张三',time()-1);`  
+
 ### 2. session 技术
-> session数据存在服务器端。  
-- 当浏览器没有携带 sessionID 对服务器发出请求时，服务器会生成一个唯一的 sessionID，并在响应时传给浏览器，浏览器使用 cookie 保存该标识。
+
+> session数据存在服务器端。   
+
+- 当浏览器没有携带 sessionID 对服务器发出请求时，服务器会生成一个唯一的 sessionID，并在响应时传给浏览器，浏览器使用 cookie 保存该标识。 
 1. 开启 session
 `session-start();`  
 2. 定义
 `$_SESSION['name']='张三';`  
 3. 使用
-`echo $_SESSION['name'];`
+`echo $_SESSION['name'];`  
 > 设置 session 文件保存路径  
 > `session_save_path("D:/session");`  
 4. 删除
@@ -711,4 +742,5 @@ echo ’添加失败’;
 * 删除 session 文件  
 `session_destroy();`  
 * 删除 session ID  
-`setcookie('PHPSESSID','',time()-1);`  
+`setcookie('PHPSESSID','',time()-1);`
+
